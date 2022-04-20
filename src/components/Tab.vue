@@ -16,7 +16,7 @@
 import TabItens from './TabItens.vue'
 import {ref,reactive} from 'vue'
 
-const tabsJSON = [{
+const tabsData = [{
     tabName: 'tab 1',
     tabText: 'Texto do primeiro tab'
 },
@@ -33,8 +33,8 @@ const tabsJSON = [{
     tabText: 'Texto do quarto tab'
 },
 ]
-    const tabNamesL = tabsJSON.map((tab) => tab.tabName)
-    const tabTextL = tabsJSON.map((tab) => tab.tabText)
+    const tabNamesL = tabsData.map((tab) => tab.tabName)
+    const tabTextL = tabsData.map((tab) => tab.tabText)
 
 const currentTab = ref<number>(0) 
 
