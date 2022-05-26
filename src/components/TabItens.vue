@@ -18,7 +18,7 @@ import './TabItens.css'
 export interface TabProps {
     tabNames: string[]
     tabTexts: string[]
-    selection?: number
+    selection: number
 }
 
 export interface TabEvents {
