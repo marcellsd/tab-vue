@@ -1,8 +1,8 @@
 <template>
     <div>
         <TabItens 
-        :tabNames="tabNamesL"
-        :tabTexts="tabTextL" 
+        :tabNames="tabDataList.tabNameList"
+        :tabTexts="tabDataList.tabTextList" 
         :selection="currentTab" 
         @on-selection="select"
         />
@@ -14,26 +14,8 @@
 <script setup lang="ts">
 import TabItens from './TabItens.vue'
 import {ref,reactive} from 'vue'
+import { tabDataList } from '@/store/tab.store';
 
-const tabsData = [{
-    tabName: 'tab 1',
-    tabText: 'Texto do primeiro tab'
-},
-{
-    tabName: 'tab 2',
-    tabText: 'Texto do segundo tab'
-},
-{
-    tabName: 'tab 3',
-    tabText: 'Texto do terceiro tab'
-},
-{
-    tabName: 'tab 4',
-    tabText: 'Texto do quarto tab'
-},
-]
-    const tabNamesL = tabsData.map((tab) => tab.tabName)
-    const tabTextL = tabsData.map((tab) => tab.tabText)
 
 const currentTab = ref<number>(0) 
 
