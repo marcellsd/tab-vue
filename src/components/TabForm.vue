@@ -8,12 +8,15 @@
         <div v-for="(tb,i) in tabName" :key="`tabAll_${i}`">
             <div :key="`tabName_${i}`">
                 <label>Título </label>
-                <input type="text" v-model="tabName[i]"/>
+                <input type="text" v-model="tabName[i]"
+                @blur="e => touched[`tabName_${i}`] && check((e.target as HTMLInputElement).value, required, `tabName_${i}`)"
+                />
                 <div className="error">{{ errors[`tabName_${i}`] }}</div>
             </div>
             <div :key="`tabtext_${i}`">
                 <label>Conteúdo </label>
-                <input type="text" v-model = "tabText[i]"/>
+                <input type="text" v-model = "tabText[i]"
+                @blur="e => touched[`tabText_${i}`] && check((e.target as HTMLInputElement).value, required, `tabText_${i}`)"/>
                 <div className="error">{{ errors[`tabText_${i}`] }}</div>
             </div>
         </div>
@@ -99,10 +102,9 @@
           .every(o => o)
           if (tabNameOk && tabTextOk) {
             emit('onSubmit',{tabNameList: tabName, tabTextList:tabText})
-            tabDataList.tabNameList = tabName, 
-            tabDataList.tabTextList = tabText}
-            console.log("Enviado")
-            console.log(tabDataList.tabNameList)
+            tabDataList.tabNameList = [...tabName], 
+            tabDataList.tabTextList = [...tabText]
+          }
         }  
 
     function required(value:string){
